@@ -1,33 +1,40 @@
-/*일차원 배열 시작 */
-package study1226;
+package study0124;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.util.Arrays;
 import java.util.StringTokenizer;
 
-public class Test01 {
-	public static void main(String[] args) throws NumberFormatException, IOException {
+public class GridTest02 {
+	public static void main(String[] args) throws IOException {
 		BufferedReader buffr = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter buffw = new BufferedWriter(new OutputStreamWriter(System.out));
 		
-		int n =Integer.parseInt(buffr.readLine());
-		
+		int N =Integer.parseInt(buffr.readLine());
 		StringTokenizer st = new StringTokenizer(buffr.readLine());
 		
-		int index = 0;
-		int[] arr = new int[n];
+		int[] array =new int[1001];
 		
-		while (st.hasMoreTokens()) {
-			arr[index] = Integer.parseInt(st.nextToken());
-			index++;
+		while (N-- > 0) {
+			array[Integer.parseInt(st.nextToken())]++;
 		}
-		Arrays.sort(arr);
-		buffw.write(arr[0]+" "+arr[n-1]);
+		
+		int a = 0; // 이전까지의 대기시간 누적 합 
+		int sum =0;// 사람별 대기시간 총합 
+
+		for (int i = 0; i < 1001; i++) {
+			while (array[i]-- >0) {
+				sum+=(i+a);
+				
+				a +=i;
+			}
+		}
+		buffw.write(sum+"");
 		buffw.flush();
 		buffw.close();
 	}
+	
+	
 }
