@@ -1,4 +1,4 @@
-package study0124;
+package study0131;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -7,34 +7,34 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.StringTokenizer;
 
-public class GridTest02 {
+public class GreedyTest03 {
 	public static void main(String[] args) throws IOException {
 		BufferedReader buffr = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter buffw = new BufferedWriter(new OutputStreamWriter(System.out));
 		
-		int N =Integer.parseInt(buffr.readLine());
-		StringTokenizer st = new StringTokenizer(buffr.readLine());
+		StringTokenizer st = new StringTokenizer((buffr.readLine()));
 		
-		int[] array =new int[1001];
+		int N = Integer.parseInt(st.nextToken());
+		int K = Integer.parseInt(st.nextToken());
 		
-		while (N-- > 0) {
-			array[Integer.parseInt(st.nextToken())]++;
+		int[] coin = new int[N];
+		
+		for (int i = 0; i < N; i++) {
+			coin[i]=Integer.parseInt(buffr.readLine());
 		}
 		
-		int a = 0; // 이전까지의 대기시간 누적 합 
-		int sum =0;// 사람별 대기시간 총합 
-
-		for (int i = 0; i < 1001; i++) {
-			while (array[i]-- >0) {
-				sum+=(i+a);
-				
-				a +=i;
+		int count=0;
+		
+		for (int i = N-1; i >= 0; i--) {
+			if (coin[i] <= K) {
+				count+=(K/coin[i]);
+				K= K % coin[i];
 			}
 		}
-		buffw.write(sum+"");
+		buffw.write(count+"");
 		buffw.flush();
 		buffw.close();
+	
+		
 	}
-	
-	
 }

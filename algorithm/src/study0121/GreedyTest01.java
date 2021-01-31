@@ -7,7 +7,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
 /*º≥≈¡ πË¥ﬁ 2839*/
-public class GridTest01 {
+public class GreedyTest01 {
 	public static void main(String[] args) throws IOException {
 		BufferedReader buffr = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter buffw = new BufferedWriter(new OutputStreamWriter(System.out));
